@@ -1,3 +1,4 @@
+using API.Middleware;
 using Application.Activities;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,7 @@ namespace API
         [System.Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+             app.UseMiddleware<ErrorHandlingMiddleware>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
